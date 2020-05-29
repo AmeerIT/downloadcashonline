@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <script>
+        function getmecash() {
+            var amount = document.getElementById("cashamount").value;
+            confirm('Downloading: $' + amount *  Math.ceil(Math.random() + 10) + ' in cash, please check your wallet.');
+        }
+    </script>
     <div class="main-grid">
         <header>
             <h1>Welcome to DownloadCashOnline.com</h1>
@@ -23,13 +29,14 @@
             get x2 or x3 for each click
             </p>
             <p>To download cash Please click the button </p>
-            <input type="text" placeholder="Amount" class="btn">
-            <button class="btn">Download now</button>
+            <input type="number" placeholder="Amount" class="btn" name="cashamount" id="cashamount" value="cashamount">
+            <button class="btn" onclick='getmecash()'>Download now</button>
         </main>
         <footer>
             copy rights reserved to whomever 2020
         </footer>
     </div>
 </body>
+
 
 </html>
