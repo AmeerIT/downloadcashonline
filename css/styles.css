@@ -28,7 +28,7 @@ body {
 }
 
 main {
-    padding: 3.5em;
+    padding: 1.4em;
     background-color: var(--cash-color);
     color: var(--bg-light);
     display: block;
