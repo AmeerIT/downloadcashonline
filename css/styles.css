@@ -10,6 +10,11 @@
     --clr-accent: black;
 }
 
+::selection{
+    background-color: var(--cash-darker);
+    color:var(--clr-text);
+}
+
 body, html {
     background-color: var(--cash-color);
     font-family: sans-serif;
