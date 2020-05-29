@@ -11,8 +11,7 @@
 </head>
 
 <body>
-
-    <div class="main-grid">
+    <div class="main-grid" id="main-grid">
         <header>
             <h1>Welcome to Cash downloader</h1>
         </header>
@@ -33,22 +32,39 @@
             </p>
             <p>To download cash Please click the button </p>
             <br>
-            <input class="btn" type="checkbox" name="dolar" id="dolar" disabled=true checked=true><label
-                for="dolar">Dolar</label>
-            <input class="btn" type="checkbox" name="euro" id="euro"><label for="euro">Euro</label>
-            <input class="btn" type="checkbox" name="yen" id="yen"><label for="yen">Yen</label>
-            <input class="btn" type="checkbox" name="iqd" id="iqd"><label for="iqd">IQD</label>
-            <input class="btn" type="checkbox" name="egp" id="egp"><label for="egp">EGP</label>
+            <label class="container" >Dolar
+                <input type="checkbox" checked="checked" disabled=true id="dolar">
+                <span class="checkmark"></span>
+            </label>
+            <button class="accordion">More Currencies
+            </button>
+            <div class="panel">
+                <label class="container">Euro
+                    <input type="checkbox" id="euro">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Yen
+                    <input type="checkbox" id="yen">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">IQD
+                    <input type="checkbox" id="iqd">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">EGP
+                    <input type="checkbox" id="egp">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
             <br>
-            <input type="number" placeholder="Amount" class="btn" name="cashamount" id="cashamount" value="cashamount">
+            <input type="number" placeholder="Amount" class="btn" name="cashamount" id="cashamount" value='0'>
             <button class="btn" onclick='getmecash()' id="thisis" style=" display: flex; float:right"><i
                     class="fa fa-download"></i></button>
         </main>
         <footer>
-            copy rights reserved to whomever 2020
+            copy rights to whomever 2020
         </footer>
     </div>
-
     <script>
 
         function getmecash() {
@@ -98,6 +114,21 @@
                     alert('Downloaded: ' + end + selectedcurrency + ' please check your wallet...');
                 }
             }, stepTime);
+        }
+
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
         }
     </script>
 </body>
