@@ -11,34 +11,13 @@
 </head>
 
 <body>
-    <script>
-        function getmecash() {
-            var amount = document.getElementById("cashamount").value;
-            if (amount == 0) {
-                alert("Please input some amount... please");
-                document.getElementById("amount").focus();
-            }
-            else {
-                alert("Please wait.. \nOur Experts are hacking NASA, ARD, NSA, STI, CSS, Elon Musk, Steve jobs, Tim Cook, Windows and Linux."
-                    + "\nThis might take a minute or two if you are not using VPN."
-                    + "\nOr click ok, if you are in a hurry");
-                alert("Now hacking FBI, SpaceX, PS4, PS5.")
-                alert('Added '
-                    + (document.getElementById("dolar").checked ? '$' : '')
-                    + (document.getElementById("euro").checked ? '£' : '')
-                    + (document.getElementById("yen").checked ? '¥' : '')
-                    + ' ' + amount * Math.ceil(Math.random() * Math.PI) + ' '
-                    + (document.getElementById("iqd").checked ? 'IQD' : '')
-                    + (document.getElementById("egp").checked ? 'EGP' : '')
-                    + ' in cash, please check your wallet.');
-            }
-        }
-    </script>
+
     <div class="main-grid">
         <header>
             <h1>Welcome to Cash downloader</h1>
         </header>
         <main>
+            <h2 id="counter"></h2>
             <p>
             <h2>
                 Disclaimer:
@@ -48,7 +27,9 @@
             get 2x or 3x for each click, based on the selected currency market.
             </p>
             <p>
-                This is all scientific, of course.
+                <i>
+                    This is all scientific, of course.
+                </i>
             </p>
             <p>To download cash Please click the button </p>
             <br>
@@ -60,13 +41,65 @@
             <input class="btn" type="checkbox" name="egp" id="egp"><label for="egp">EGP</label>
             <br>
             <input type="number" placeholder="Amount" class="btn" name="cashamount" id="cashamount" value="cashamount">
-            <button class="btn" onclick='getmecash()' style=" display: flex; float:right"><i
+            <button class="btn" onclick='getmecash()' id="thisis" style=" display: flex; float:right"><i
                     class="fa fa-download"></i></button>
         </main>
         <footer>
             copy rights reserved to whomever 2020
         </footer>
     </div>
+
+    <script>
+
+        function getmecash() {
+            var selectedcurrency = (document.getElementById("dolar").checked ? '$' : '')
+                + (document.getElementById("euro").checked ? '£' : '')
+                + (document.getElementById("yen").checked ? '¥' : '')
+                + (document.getElementById("iqd").checked ? 'IQD' : '')
+                + (document.getElementById("egp").checked ? 'EGP' : '');
+            var amount = document.getElementById("cashamount").value;
+            if (amount == 0) {
+                alert("Please input some amount... please");
+                document.getElementById("amount").focus();
+            }
+            else {
+                alert("Please wait.. \nOur Experts are hacking NASA, ARD, NSA, STI, CSS, Elon Musk, Steve jobs, Tim Cook, Windows and Linux."
+                    + "\nThis might take a minute or two if you are not using VPN."
+                    + "\nOr click ok, if you are in a hurry");
+                alert("Now hacking FBI, SpaceX, PS4, PS5.")
+                animateValue("counter", 0, amount, 500);
+                document.getElementById('thisis').style.visibility = 'hidden';
+            }
+        }
+
+        function animateValue(id, start, end, duration) {
+            var selectedcurrency = (document.getElementById("dolar").checked ? '$' : '')
+                + (document.getElementById("euro").checked ? '£' : '')
+                + (document.getElementById("yen").checked ? '¥' : '')
+                + (document.getElementById("iqd").checked ? 'IQD' : '')
+                + (document.getElementById("egp").checked ? 'EGP' : '');
+
+            var range = end - start;
+            var current = start;
+            var increment = end > start ? 1 : -1;
+            var stepTime = Math.abs(Math.floor(duration / range));
+            console.log(stepTime);
+
+            var obj = document.getElementById(id);
+            obj.style.display = 'flex';
+            var timer = setInterval(function () {
+                current += increment;
+                obj.innerHTML = 'Downloading: ' + current + ' ' + selectedcurrency;
+                if (current == end) {
+                    clearInterval(timer);
+                    obj.style.display = 'none';
+                    document.getElementById('thisis').style.visibility = 'visible';
+                    document.getElementById("cashamount").value = '';
+                    alert('Downloaded: ' + end + selectedcurrency + ' please check your wallet...');
+                }
+            }, stepTime);
+        }
+    </script>
 </body>
 
 </html>
